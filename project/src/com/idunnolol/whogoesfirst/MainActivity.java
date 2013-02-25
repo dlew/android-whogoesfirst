@@ -1,22 +1,39 @@
 package com.idunnolol.whogoesfirst;
 
-import android.os.Bundle;
-import android.app.Activity;
-import android.view.Menu;
+import com.idunnolol.whogoesfirst.PlayerCountFragment.PlayerCountFragmentListener;
 
-public class MainActivity extends Activity {
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+
+public class MainActivity extends Activity implements PlayerCountFragmentListener {
+
+	private PlayerCountFragment mPlayerCountFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+
+		if (savedInstanceState == null) {
+			mPlayerCountFragment = new PlayerCountFragment();
+
+			FragmentManager fm = getFragmentManager();
+			FragmentTransaction ft = fm.beginTransaction();
+			ft.add(android.R.id.content, mPlayerCountFragment, PlayerCountFragment.TAG);
+			ft.commit();
+		}
+		else {
+			mPlayerCountFragment = Ui.findFragment(this, PlayerCountFragment.TAG);
+		}
 	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// PlayerCountFragmentListener
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	public void onPlayerCountSelected(int count) {
+		// TODO Auto-generated method stub
 
+	}
 }

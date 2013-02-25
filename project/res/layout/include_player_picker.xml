@@ -1,0 +1,86 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:stretchColumns="*" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/two_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/two" />
+
+        <Button
+            android:id="@+id/three_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/three" />
+
+        <Button
+            android:id="@+id/four_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/four" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/five_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/five" />
+
+        <Button
+            android:id="@+id/six_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/six" />
+
+        <Button
+            android:id="@+id/seven_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/seven" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/eight_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/eight" />
+
+        <Button
+            android:id="@+id/nine_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/nine" />
+
+        <Button
+            android:id="@+id/ten_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/ten" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/more_button"
+            style="@style/PlayerCountButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_span="3"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:text="@string/more" />
+    </TableRow>
+
+</TableLayout>
