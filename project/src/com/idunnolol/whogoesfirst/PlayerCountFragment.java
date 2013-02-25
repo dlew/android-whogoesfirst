@@ -3,8 +3,6 @@ package com.idunnolol.whogoesfirst;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -55,16 +53,11 @@ public class PlayerCountFragment extends Fragment {
 		});
 
 		// Highlight part of the inquiry text
+		TextView inquiryTextView = Ui.findView(v, R.id.inquiry_text_view);
 		String text = getString(R.string.player_count_inquiry);
 		String highlight = getString(R.string.player_count_inquiry_highlight);
-		Spannable spannable = Spannable.Factory.getInstance().newSpannable(getString(R.string.player_count_inquiry));
-		int start = text.indexOf(highlight);
 		int color = getResources().getColor(android.R.color.holo_blue_light);
-		spannable.setSpan(new ForegroundColorSpan(color), start, start + highlight.length(),
-				Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-		TextView inquiryTextView = Ui.findView(v, R.id.inquiry_text_view);
-		inquiryTextView.setText(spannable);
+		inquiryTextView.setText(Ui.createHighlightedText(text, highlight, color));
 
 		return v;
 	}

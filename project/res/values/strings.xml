@@ -24,4 +24,23 @@
     <string name="nine">9</string>
     <string name="ten">10</string>
 
+    <!-- Who goes first fragment -->
+    <string name="you_go_first">You go first.</string>
+    <string name="you_go_first_highlight">You</string>
+    <string name="other_player_goes_first">The other player goes first.</string>
+    <string name="other_player_goes_first_highlight">other player</string>
+    <string name="player_directly_left">The player on your left goes first.</string>
+    <string name="player_directly_left_highlight">on your left</string>
+    <string name="player_to_left_TEMPLATE">The player %s to your left goes first.</string>
+    <string name="player_to_left_highlight_TEMPLATE">%s to your left</string>
+    <string name="player_directly_right">The player on your right goes first.</string>
+    <string name="player_directly_right_highlight">on your right</string>
+    <string name="player_to_right_TEMPLATE">The player %s to your right goes first.</string>
+    <string name="player_to_right_highlight_TEMPLATE">%s to your right</string>
+
+    <!-- Some nicely localized strings for common distances away -->
+    <string name="two_full">two</string>
+    <string name="three_full">three</string>
+    <string name="four_full">four</string>
+    <string name="five_full">five</string>
 </resources>
