@@ -45,7 +45,7 @@ public class WhoGoesFragment extends Fragment {
 
 		if (playerPicked == 0) {
 			// You go first
-			text = getString(R.string.you_go_first);
+			text = getString((numPlayers == 1) ? R.string.you_go_first_duh : R.string.you_go_first);
 			highlight = getString(R.string.you_go_first_highlight);
 		}
 		else if (numPlayers == 2) {
@@ -93,6 +93,9 @@ public class WhoGoesFragment extends Fragment {
 				break;
 			case 5:
 				textVal = getString(R.string.five_full);
+				break;
+			case 6:
+				textVal = getString(R.string.six_full);
 				break;
 			default:
 				textVal = Integer.toString(val);

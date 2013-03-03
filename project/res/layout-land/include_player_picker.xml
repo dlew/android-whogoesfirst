@@ -10,6 +10,11 @@
         android:layout_weight="1" >
 
         <Button
+            android:id="@+id/one_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/one" />
+
+        <Button
             android:id="@+id/two_button"
             style="@style/PlayerCountButton"
             android:text="@string/two" />
@@ -61,10 +66,14 @@
             android:text="@string/ten" />
 
         <Button
-            android:id="@+id/more_button"
+            android:id="@+id/eleven_button"
             style="@style/PlayerCountButton"
-            android:includeFontPadding="true"
-            android:text="@string/more_short" />
+            android:text="@string/eleven" />
+
+        <Button
+            android:id="@+id/twelve_button"
+            style="@style/PlayerCountButton"
+            android:text="@string/twelve" />
     </TableRow>
 
 </TableLayout>

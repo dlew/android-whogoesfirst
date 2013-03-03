@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class PlayerCountFragment extends Fragment {
 
@@ -33,6 +32,7 @@ public class PlayerCountFragment extends Fragment {
 		View v = inflater.inflate(R.layout.fragment_player_count, container, false);
 
 		// Rig up the button click listener
+		Ui.findView(v, R.id.one_button).setOnClickListener(mButtonClickListener);
 		Ui.findView(v, R.id.two_button).setOnClickListener(mButtonClickListener);
 		Ui.findView(v, R.id.three_button).setOnClickListener(mButtonClickListener);
 		Ui.findView(v, R.id.four_button).setOnClickListener(mButtonClickListener);
@@ -42,15 +42,8 @@ public class PlayerCountFragment extends Fragment {
 		Ui.findView(v, R.id.eight_button).setOnClickListener(mButtonClickListener);
 		Ui.findView(v, R.id.nine_button).setOnClickListener(mButtonClickListener);
 		Ui.findView(v, R.id.ten_button).setOnClickListener(mButtonClickListener);
-
-		// Rig up more button
-		Ui.findView(v, R.id.more_button).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				// TODO: Implement "more" functionality
-				Toast.makeText(getActivity(), getString(R.string.more_warning), Toast.LENGTH_SHORT).show();
-			}
-		});
+		Ui.findView(v, R.id.eleven_button).setOnClickListener(mButtonClickListener);
+		Ui.findView(v, R.id.twelve_button).setOnClickListener(mButtonClickListener);
 
 		// Highlight part of the inquiry text
 		TextView inquiryTextView = Ui.findView(v, R.id.inquiry_text_view);
@@ -65,6 +58,9 @@ public class PlayerCountFragment extends Fragment {
 	private OnClickListener mButtonClickListener = new OnClickListener() {
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.one_button:
+				mListener.onPlayerCountSelected(1);
+				break;
 			case R.id.two_button:
 				mListener.onPlayerCountSelected(2);
 				break;
@@ -91,6 +87,12 @@ public class PlayerCountFragment extends Fragment {
 				break;
 			case R.id.ten_button:
 				mListener.onPlayerCountSelected(10);
+				break;
+			case R.id.eleven_button:
+				mListener.onPlayerCountSelected(11);
+				break;
+			case R.id.twelve_button:
+				mListener.onPlayerCountSelected(12);
 				break;
 			}
 		}
