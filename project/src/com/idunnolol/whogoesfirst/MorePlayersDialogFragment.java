@@ -44,6 +44,7 @@ public class MorePlayersDialogFragment extends DialogFragment {
 		builder.setPositiveButton(android.R.string.ok, new OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
+				numPicker.clearFocus();
 				mListener.onPlayerCountSelected(numPicker.getValue());
 			}
 		});
