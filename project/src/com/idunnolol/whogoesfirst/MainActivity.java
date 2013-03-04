@@ -11,9 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.idunnolol.whogoesfirst.PlayerCountFragment.PlayerCountFragmentListener;
-
-public class MainActivity extends Activity implements PlayerCountFragmentListener {
+public class MainActivity extends Activity implements PlayerCountListener {
 
 	private PlayerCountFragment mPlayerCountFragment;
 	private WhoGoesFragment mWhoGoesFragment;
@@ -68,7 +66,7 @@ public class MainActivity extends Activity implements PlayerCountFragmentListene
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	// PlayerCountFragmentListener
+	// PlayerCountListener
 
 	@Override
 	public void onPlayerCountSelected(int count) {

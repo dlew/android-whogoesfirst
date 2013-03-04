@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -13,14 +16,21 @@ public class PlayerCountFragment extends Fragment {
 
 	public static final String TAG = PlayerCountFragment.class.getName();
 
-	private PlayerCountFragmentListener mListener;
+	private PlayerCountListener mListener;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setHasOptionsMenu(true);
+	}
 
 	@Override
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 
-		if (activity instanceof PlayerCountFragmentListener) {
-			mListener = (PlayerCountFragmentListener) activity;
+		if (activity instanceof PlayerCountListener) {
+			mListener = (PlayerCountListener) activity;
 		}
 		else {
 			throw new RuntimeException("PlayerCountFragment Activity needs to implement listener!");
@@ -53,6 +63,24 @@ public class PlayerCountFragment extends Fragment {
 		inquiryTextView.setText(Ui.createHighlightedText(text, highlight, color));
 
 		return v;
+	}
+
+	@Override
+	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+		inflater.inflate(R.menu.menu, menu);
+		super.onCreateOptionsMenu(menu, inflater);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_more:
+			MorePlayersDialogFragment df = new MorePlayersDialogFragment();
+			df.show(getFragmentManager(), MorePlayersDialogFragment.TAG);
+			return true;
+		}
+
+		return super.onOptionsItemSelected(item);
 	}
 
 	private OnClickListener mButtonClickListener = new OnClickListener() {
@@ -97,8 +125,4 @@ public class PlayerCountFragment extends Fragment {
 			}
 		}
 	};
-
-	public interface PlayerCountFragmentListener {
-		public void onPlayerCountSelected(int count);
-	}
 }
