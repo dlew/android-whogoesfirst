@@ -1,13 +1,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="8dp" >
+    android:padding="16dp" >
+
+    <com.idunnolol.whogoesfirst.ArrowView
+        android:id="@+id/arrow_view"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginBottom="32dp" />
 
     <TextView
         android:id="@+id/who_text_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="32dp" />

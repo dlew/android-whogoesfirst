@@ -14,6 +14,9 @@ public class WhoGoesFragment extends Fragment {
 	private static final String ARG_NUM_PLAYERS = "ARG_NUM_PLAYERS";
 	private static final String ARG_PLAYER_PICKED = "ARG_PLAYER_PICKED";
 
+	private int mNumPlayers;
+	private int mPlayerPicked;
+
 	public static WhoGoesFragment newInstance(int numPlayers, int playerPicked) {
 		WhoGoesFragment fragment = new WhoGoesFragment();
 		Bundle args = new Bundle();
@@ -24,41 +27,62 @@ public class WhoGoesFragment extends Fragment {
 	}
 
 	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		Bundle args = getArguments();
+		mNumPlayers = args.getInt(ARG_NUM_PLAYERS);
+		mPlayerPicked = args.getInt(ARG_PLAYER_PICKED);
+	}
+
+	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.fragment_who_goes, container, false);
 
 		TextView whoTextView = Ui.findView(v, R.id.who_text_view);
 		whoTextView.setText(createText());
 
+		ArrowView arrowView = Ui.findView(v, R.id.arrow_view);
+		if (mPlayerPicked == 0) {
+			// Point down if you were picked
+			arrowView.setRotation(180);
+		}
+		else if (mPlayerPicked == 1 && mNumPlayers == 2) {
+			// Point up if there are only 2 players and the other player was picked
+			arrowView.setRotation(0);
+		}
+		else if (countToLeft()) {
+			arrowView.setRotation(270);
+		}
+		else {
+			arrowView.setRotation(90);
+		}
+
 		return v;
 	}
 
 	// Determine the text based on the # of players 
 	private CharSequence createText() {
-		Bundle args = getArguments();
-		int numPlayers = args.getInt(ARG_NUM_PLAYERS);
-		int playerPicked = args.getInt(ARG_PLAYER_PICKED);
-
 		String text = null;
 		String highlight = null;
 		int highlightColor = getResources().getColor(android.R.color.holo_blue_light);
 
-		if (playerPicked == 0) {
+		if (mPlayerPicked == 0) {
 			// You go first
-			text = getString((numPlayers == 1) ? R.string.you_go_first_duh : R.string.you_go_first);
+			text = getString((mNumPlayers == 1) ? R.string.you_go_first_duh : R.string.you_go_first);
 			highlight = getString(R.string.you_go_first_highlight);
 		}
-		else if (numPlayers == 2) {
+		else if (mNumPlayers == 2) {
 			// Special case; if there are two players but you don't first
 			text = getString(R.string.other_player_goes_first);
 			highlight = getString(R.string.other_player_goes_first_highlight);
 		}
-		else if (playerPicked == 1) {
+		else if (mPlayerPicked == 1) {
 			// Player clockwise (aka, one left) goes first
 			text = getString(R.string.player_directly_left);
 			highlight = getString(R.string.player_directly_left_highlight);
 		}
-		else if (playerPicked == numPlayers - 1) {
+		else if (mPlayerPicked == mNumPlayers - 1) {
 			// Player counterclockwise (aka, one right) goes first
 			text = getString(R.string.player_directly_right);
 			highlight = getString(R.string.player_directly_right_highlight);
@@ -69,13 +93,13 @@ public class WhoGoesFragment extends Fragment {
 			int val;
 
 			// Figure out quickest way to get to the player (left used if equidistance)
-			if (playerPicked <= numPlayers / 2) {
-				val = playerPicked;
+			if (countToLeft()) {
+				val = mPlayerPicked;
 				textResId = R.string.player_to_left_TEMPLATE;
 				highlightResId = R.string.player_to_left_highlight_TEMPLATE;
 			}
 			else {
-				val = numPlayers - playerPicked;
+				val = mNumPlayers - mPlayerPicked;
 				textResId = R.string.player_to_right_TEMPLATE;
 				highlightResId = R.string.player_to_right_highlight_TEMPLATE;
 			}
@@ -107,5 +131,10 @@ public class WhoGoesFragment extends Fragment {
 		}
 
 		return Ui.createHighlightedText(text, highlight, highlightColor);
+	}
+
+	// If there are > 2 players, tells you which way to count (left or right)
+	private boolean countToLeft() {
+		return mPlayerPicked <= mNumPlayers / 2;
 	}
 }
