@@ -61,6 +61,11 @@ public class WhoGoesFragment extends Fragment {
 			arrowView.setRotation(90);
 		}
 
+		int spacesAway = howFarAway();
+		if (spacesAway > 1) {
+			arrowView.setMultiplier(spacesAway);
+		}
+
 		return v;
 	}
 
@@ -93,16 +98,14 @@ public class WhoGoesFragment extends Fragment {
 		else {
 			int textResId;
 			int highlightResId;
-			int val;
+			int val = howFarAway();
 
 			// Figure out quickest way to get to the player (left used if equidistance)
 			if (countToLeft()) {
-				val = mPlayerPicked;
 				textResId = R.string.player_to_left_TEMPLATE;
 				highlightResId = R.string.player_to_left_highlight_TEMPLATE;
 			}
 			else {
-				val = mNumPlayers - mPlayerPicked;
 				textResId = R.string.player_to_right_TEMPLATE;
 				highlightResId = R.string.player_to_right_highlight_TEMPLATE;
 			}
@@ -139,5 +142,10 @@ public class WhoGoesFragment extends Fragment {
 	// If there are > 2 players, tells you which way to count (left or right)
 	private boolean countToLeft() {
 		return mPlayerPicked <= mNumPlayers / 2;
+	}
+
+	// Returns the number of spaces away the person is from you
+	private int howFarAway() {
+		return Math.min(mPlayerPicked, mNumPlayers - mPlayerPicked);
 	}
 }

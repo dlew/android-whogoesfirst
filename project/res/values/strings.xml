@@ -46,4 +46,7 @@
     <string name="five_full">five</string>
     <string name="six_full">six</string>
 
+    <!-- For the multiplier inside the ArrowView -->
+    <string name="multiplier_TEMPLATE">X%1$d</string>
+
 </resources>
