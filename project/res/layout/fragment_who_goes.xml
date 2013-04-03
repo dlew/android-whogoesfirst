@@ -5,16 +5,27 @@
     android:orientation="vertical"
     android:padding="16dp" >
 
+    <include
+        android:id="@+id/arrow_row1"
+        style="@style/ArrowRow"
+        layout="@layout/snippet_arrow_view_row" />
+
+    <include
+        android:id="@+id/arrow_row2"
+        style="@style/ArrowRow"
+        android:layout_marginTop="8dp"
+        layout="@layout/snippet_arrow_view_row" />
+
     <com.idunnolol.whogoesfirst.ArrowView
         android:id="@+id/arrow_view"
         android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginBottom="32dp" />
+        android:layout_height="128dp" />
 
     <TextView
         android:id="@+id/who_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="32dp" />

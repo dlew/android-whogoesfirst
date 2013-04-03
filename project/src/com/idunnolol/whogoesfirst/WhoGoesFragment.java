@@ -45,25 +45,70 @@ public class WhoGoesFragment extends Fragment {
 		TextView whoTextView = Ui.findView(v, R.id.who_text_view);
 		whoTextView.setText(createText());
 
+		ArrowRow arrowRow1 = Ui.findView(v, R.id.arrow_row1);
+		ArrowRow arrowRow2 = Ui.findView(v, R.id.arrow_row2);
 		ArrowView arrowView = Ui.findView(v, R.id.arrow_view);
+
+		int rotation;
 		if (mPlayerPicked == 0) {
 			// Point down if you were picked
-			arrowView.setRotation(180);
+			rotation = 180;
 		}
 		else if (mPlayerPicked == 1 && mNumPlayers == 2) {
 			// Point up if there are only 2 players and the other player was picked
-			arrowView.setRotation(0);
+			rotation = 0;
 		}
 		else if (countToLeft()) {
-			arrowView.setRotation(270);
+			rotation = 270;
 		}
 		else {
-			arrowView.setRotation(90);
+			rotation = 90;
 		}
 
+		// We've got special configurations for 0-6 spaces away.  After that, fall back
+		// to the arrow with a multiplier inside of it.  This could probably be
+		// done in a more dynamic fashion but I'm being lazy tonight.
 		int spacesAway = howFarAway();
-		if (spacesAway > 1) {
+		switch (spacesAway) {
+		case 0:
+		case 1:
+			arrowView.setRotation(rotation);
+
+			arrowRow1.setVisibility(View.GONE);
+			arrowRow2.setVisibility(View.GONE);
+			break;
+		case 2:
+		case 3:
+			arrowRow1.bind(rotation, spacesAway);
+
+			arrowView.setVisibility(View.GONE);
+			arrowRow2.setVisibility(View.GONE);
+			break;
+		case 4:
+			arrowRow1.bind(rotation, 2);
+			arrowRow2.bind(rotation, 2);
+
+			arrowView.setVisibility(View.GONE);
+			break;
+		case 5:
+			arrowRow1.bind(rotation, 2);
+			arrowRow2.bind(rotation, 3);
+
+			arrowView.setVisibility(View.GONE);
+			break;
+		case 6:
+			arrowRow1.bind(rotation, 3);
+			arrowRow2.bind(rotation, 3);
+
+			arrowView.setVisibility(View.GONE);
+			break;
+		default:
 			arrowView.setMultiplier(spacesAway);
+			arrowView.setRotation(rotation);
+
+			arrowRow1.setVisibility(View.GONE);
+			arrowRow2.setVisibility(View.GONE);
+			break;
 		}
 
 		return v;
