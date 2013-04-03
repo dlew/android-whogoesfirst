@@ -2,11 +2,13 @@
 <resources>
 
     <string name="app_name">Who Goes First</string>
+
+    <!-- "More" dialog -->
     <string name="action_more">More</string>
-    <string name="more_title">How Many Players?</string>
+    <string name="more_title">How Many People?</string>
 
     <!-- Player picker fragment -->
-    <string name="player_count_inquiry">How many people are playing?</string>
+    <string name="player_count_inquiry">How many people are there?</string>
     <!-- Should be the subsection of player_count_inquiry that we want to highlight -->
     <string name="player_count_inquiry_highlight">How many</string>
 
@@ -28,15 +30,15 @@
     <string name="you_go_first_duh">You go first.  Duh.</string>
     <string name="you_go_first">You go first.</string>
     <string name="you_go_first_highlight">You</string>
-    <string name="other_player_goes_first">The other player goes first.</string>
-    <string name="other_player_goes_first_highlight">other player</string>
-    <string name="player_directly_left">The player on your left goes first.</string>
+    <string name="other_player_goes_first">The other person goes first.</string>
+    <string name="other_player_goes_first_highlight">other person</string>
+    <string name="player_directly_left">The person on your left goes first.</string>
     <string name="player_directly_left_highlight">on your left</string>
-    <string name="player_to_left_TEMPLATE">The player %s to your left goes first.</string>
+    <string name="player_to_left_TEMPLATE">The person %s to your left goes first.</string>
     <string name="player_to_left_highlight_TEMPLATE">%s to your left</string>
-    <string name="player_directly_right">The player on your right goes first.</string>
+    <string name="player_directly_right">The person on your right goes first.</string>
     <string name="player_directly_right_highlight">on your right</string>
-    <string name="player_to_right_TEMPLATE">The player %s to your right goes first.</string>
+    <string name="player_to_right_TEMPLATE">The person %s to your right goes first.</string>
     <string name="player_to_right_highlight_TEMPLATE">%s to your right</string>
 
     <!-- Some nicely localized strings for common distances away -->
