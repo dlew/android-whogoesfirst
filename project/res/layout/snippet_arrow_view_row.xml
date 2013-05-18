@@ -7,14 +7,18 @@
 
     <com.idunnolol.whogoesfirst.ArrowView
         android:id="@+id/arrow_view1"
-        style="@style/ArrowRowView" />
+        style="@style/ArrowRowView"
+        android:layout_marginRight="@dimen/arrow_margin" />
 
     <com.idunnolol.whogoesfirst.ArrowView
         android:id="@+id/arrow_view2"
-        style="@style/ArrowRowView" />
+        style="@style/ArrowRowView"
+        android:layout_marginLeft="@dimen/arrow_margin"
+        android:layout_marginRight="@dimen/arrow_margin" />
 
     <com.idunnolol.whogoesfirst.ArrowView
         android:id="@+id/arrow_view3"
-        style="@style/ArrowRowView" />
+        style="@style/ArrowRowView"
+        android:layout_marginLeft="@dimen/arrow_margin" />
 
 </com.idunnolol.whogoesfirst.ArrowRow>

@@ -1,9 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="16dp" >
+    android:padding="16dp"
+    tools:context=".WhoGoesFragment" >
 
     <include
         android:id="@+id/arrow_row1"
@@ -27,7 +29,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
+        android:text="The person five to your left goes first"
         android:textColor="@android:color/darker_gray"
-        android:textSize="32dp" />
+        android:textSize="32sp"
+        tools:ignore="HardcodedText" />
 
 </LinearLayout>

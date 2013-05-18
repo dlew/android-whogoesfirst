@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="arrow_size">60dp</dimen>
+    <dimen name="arrow_margin">8dp</dimen>
+
+</resources>
