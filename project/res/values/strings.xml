@@ -6,6 +6,8 @@
     <!-- "More" dialog -->
     <string name="action_more">More</string>
     <string name="more_title">How Many People?</string>
+    <string name="hint_more_players">Number of players</string>
+    <string name="template_invalid_number_players">"%d" is not a valid number of people</string>
 
     <!-- Player picker fragment -->
     <string name="player_count_inquiry">How many people are there?</string>

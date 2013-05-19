@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements PlayerCountListener {
 
@@ -79,6 +80,12 @@ public class MainActivity extends FragmentActivity implements PlayerCountListene
 
 	@Override
 	public void onPlayerCountSelected(int count) {
+		// Catch if someone entered an invalid number somehow
+		if (count < 1) {
+			Toast.makeText(this, getString(R.string.template_invalid_number_players, count), Toast.LENGTH_SHORT).show();
+			return;
+		}
+
 		// Pick the player (0 == current player, 1 == 1 clockwise, 2 == 2 clockwise, etc.)
 		Random rand = new Random();
 		int player = rand.nextInt(count);
