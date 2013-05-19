@@ -19,7 +19,7 @@ public class MainActivity extends Activity implements PlayerCountListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		getFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {
 			@Override
 			public void onBackStackChanged() {
