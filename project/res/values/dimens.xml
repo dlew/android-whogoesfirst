@@ -3,5 +3,6 @@
 
     <dimen name="arrow_size">60dp</dimen>
     <dimen name="arrow_margin">8dp</dimen>
+    <dimen name="number_button_text_size">40dp</dimen>
 
 </resources>
