@@ -30,6 +30,8 @@ public class ArrowView extends View {
 
 	private int mMultiplier = 0;
 
+	private int mRotation;
+
 	public ArrowView(Context context) {
 		this(context, null, 0);
 	}
@@ -66,6 +68,10 @@ public class ArrowView extends View {
 		invalidate();
 	}
 
+	public void setArrowRotation(int rotation) {
+		mRotation = rotation;
+	}
+
 	@Override
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		super.onSizeChanged(w, h, oldw, oldh);
@@ -78,6 +84,9 @@ public class ArrowView extends View {
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
+
+		canvas.save();
+		canvas.rotate(mRotation, mWidth / 2, mHeight / 2);
 
 		// Draw an arrow
 		mArrowPath.rewind();
@@ -92,12 +101,10 @@ public class ArrowView extends View {
 
 		canvas.drawPath(mArrowPath, mArrowPaint);
 
+		canvas.restore();
+
 		// Draw a multiplier (if non-zero)
 		if (mMultiplier > 0) {
-			// Always orient up (even if the View is rotated)
-			canvas.save();
-			canvas.rotate(-getRotation(), mWidth / 2.0f, mHeight / 2.0f);
-
 			String text = getContext().getString(R.string.multiplier_TEMPLATE, mMultiplier);
 
 			// We need to adapt the text size to the space we have (and also
@@ -112,8 +119,6 @@ public class ArrowView extends View {
 			}
 
 			canvas.drawText(text, mWidth / 2.0f, (mHeight + mBounds.height()) / 2.0f, mTextPaint);
-
-			canvas.restore();
 		}
 	}
 

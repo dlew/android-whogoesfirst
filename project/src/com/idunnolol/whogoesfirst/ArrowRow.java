@@ -33,7 +33,7 @@ public class ArrowRow extends LinearLayout {
 
 		for (int a = 0; a < mArrowViews.size(); a++) {
 			ArrowView arrowView = mArrowViews.get(a);
-			arrowView.setRotation(rotation);
+			arrowView.setArrowRotation(rotation);
 			arrowView.setVisibility((a < num) ? View.VISIBLE : View.GONE);
 		}
 	}

@@ -72,7 +72,7 @@ public class WhoGoesFragment extends Fragment {
 		switch (spacesAway) {
 		case 0:
 		case 1:
-			arrowView.setRotation(rotation);
+			arrowView.setArrowRotation(rotation);
 
 			arrowRow1.setVisibility(View.GONE);
 			arrowRow2.setVisibility(View.GONE);
@@ -104,7 +104,7 @@ public class WhoGoesFragment extends Fragment {
 			break;
 		default:
 			arrowView.setMultiplier(spacesAway);
-			arrowView.setRotation(rotation);
+			arrowView.setArrowRotation(rotation);
 
 			arrowRow1.setVisibility(View.GONE);
 			arrowRow2.setVisibility(View.GONE);
