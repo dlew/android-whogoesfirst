@@ -118,7 +118,7 @@ public class WhoGoesFragment extends Fragment {
 	private CharSequence createText() {
 		String text = null;
 		String highlight = null;
-		int highlightColor = getResources().getColor(android.R.color.holo_blue_light);
+		int highlightColor = getResources().getColor(R.color.holo_blue_light);
 
 		if (mPlayerPicked == 0) {
 			// You go first

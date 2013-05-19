@@ -2,7 +2,9 @@ package com.idunnolol.whogoesfirst;
 
 import java.util.Random;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -44,12 +46,19 @@ public class MainActivity extends FragmentActivity implements PlayerCountListene
 	//////////////////////////////////////////////////////////////////////////
 	// ActionBar
 
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
 	public boolean onPrepareOptionsMenu(Menu menu) {
-		boolean canGoBack = getFragmentManager().getBackStackEntryCount() > 0;
-		ActionBar actionBar = getActionBar();
-		actionBar.setDisplayHomeAsUpEnabled(canGoBack);
-		actionBar.setHomeButtonEnabled(canGoBack);
+		boolean canGoBack = getSupportFragmentManager().getBackStackEntryCount() > 0;
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			ActionBar actionBar = getActionBar();
+			actionBar.setDisplayHomeAsUpEnabled(canGoBack);
+
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+				actionBar.setHomeButtonEnabled(canGoBack);
+			}
+		}
 
 		return super.onPrepareOptionsMenu(menu);
 	}

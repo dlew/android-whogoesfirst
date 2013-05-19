@@ -59,7 +59,7 @@ public class PlayerCountFragment extends Fragment {
 		TextView inquiryTextView = Ui.findView(v, R.id.inquiry_text_view);
 		String text = getString(R.string.player_count_inquiry);
 		String highlight = getString(R.string.player_count_inquiry_highlight);
-		int color = getResources().getColor(android.R.color.holo_blue_light);
+		int color = getResources().getColor(R.color.holo_blue_light);
 		inquiryTextView.setText(Ui.createHighlightedText(text, highlight, color));
 
 		return v;

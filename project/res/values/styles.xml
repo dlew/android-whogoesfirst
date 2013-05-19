@@ -5,7 +5,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@color/holo_blue_light</item>
         <item name="android:textSize">@dimen/number_button_text_size</item>
         <item name="android:background">@drawable/btn_number</item>
     </style>

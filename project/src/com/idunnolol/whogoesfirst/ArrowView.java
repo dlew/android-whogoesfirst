@@ -44,7 +44,7 @@ public class ArrowView extends View {
 		super(context, attrs, defStyle);
 
 		mArrowPaint = new Paint();
-		mArrowPaint.setColor(context.getResources().getColor(android.R.color.holo_blue_light));
+		mArrowPaint.setColor(context.getResources().getColor(R.color.holo_blue_light));
 		mArrowPaint.setStyle(Style.FILL);
 		mArrowPaint.setAntiAlias(true);
 
