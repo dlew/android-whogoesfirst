@@ -1,7 +1,8 @@
 package com.idunnolol.whogoesfirst;
 
 import android.app.Activity;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
@@ -22,8 +23,8 @@ public class Ui {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static <T extends Fragment> T findFragment(Activity activity, String tag) {
-		return (T) activity.getFragmentManager().findFragmentByTag(tag);
+	public static <T extends Fragment> T findFragment(FragmentActivity activity, String tag) {
+		return (T) activity.getSupportFragmentManager().findFragmentByTag(tag);
 	}
 
 	public static CharSequence createHighlightedText(String text, String highlight, int highlightColor) {

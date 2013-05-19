@@ -3,15 +3,15 @@ package com.idunnolol.whogoesfirst;
 import java.util.Random;
 
 import android.app.ActionBar;
-import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentManager.OnBackStackChangedListener;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
+import android.support.v4.app.FragmentTransaction;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends Activity implements PlayerCountListener {
+public class MainActivity extends FragmentActivity implements PlayerCountListener {
 
 	private PlayerCountFragment mPlayerCountFragment;
 	private WhoGoesFragment mWhoGoesFragment;
@@ -20,17 +20,17 @@ public class MainActivity extends Activity implements PlayerCountListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		getFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {
+		getSupportFragmentManager().addOnBackStackChangedListener(new OnBackStackChangedListener() {
 			@Override
 			public void onBackStackChanged() {
-				invalidateOptionsMenu();
+				supportInvalidateOptionsMenu();
 			}
 		});
 
 		if (savedInstanceState == null) {
 			mPlayerCountFragment = new PlayerCountFragment();
 
-			FragmentManager fm = getFragmentManager();
+			FragmentManager fm = getSupportFragmentManager();
 			FragmentTransaction ft = fm.beginTransaction();
 			ft.add(android.R.id.content, mPlayerCountFragment, PlayerCountFragment.TAG);
 			ft.commit();
@@ -76,7 +76,7 @@ public class MainActivity extends Activity implements PlayerCountListener {
 
 		mWhoGoesFragment = WhoGoesFragment.newInstance(count, player);
 
-		FragmentManager fm = getFragmentManager();
+		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction ft = fm.beginTransaction();
 		ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
 		ft.remove(mPlayerCountFragment);
